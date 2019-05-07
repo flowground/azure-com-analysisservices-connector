@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "location": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Details of server name request body.",
+            "properties": {
+                "name": {
+                    "description": "Name for checking availability.",
+                    "maxLength": 63,
+                    "minLength": 3,
+                    "pattern": "^[a-z][a-z0-9]*$",
+                    "type": "string"
+                },
+                "type": {
+                    "default": "Microsoft.AnalysisServices/servers",
+                    "description": "The resource type of azure analysis services.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

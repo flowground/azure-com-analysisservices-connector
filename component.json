@@ -1,0 +1,322 @@
+{
+    "title": "AzureAnalysisServices",
+    "description": "The Azure Analysis Services Web API provides a RESTful set of web services that enables users to create, retrieve, update, and delete Analysis Services servers",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/analysisservices/2017-08-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists all of the available consumption REST API operations.",
+            "description": "Lists all of the available consumption REST API operations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_CheckNameAvailability": {
+            "main": "./lib/actions/Servers_CheckNameAvailability.js",
+            "title": "Check the name availability in the target location.",
+            "description": "Check the name availability in the target location.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_CheckNameAvailability.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_ListOperationResults": {
+            "main": "./lib/actions/Servers_ListOperationResults.js",
+            "title": "List the result of the specified operation.",
+            "description": "List the result of the specified operation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_ListOperationResults.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_ListOperationStatuses": {
+            "main": "./lib/actions/Servers_ListOperationStatuses.js",
+            "title": "List the status of operation.",
+            "description": "List the status of operation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_ListOperationStatuses.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_List": {
+            "main": "./lib/actions/Servers_List.js",
+            "title": "Lists all the Analysis Services servers for the given subscription.",
+            "description": "Lists all the Analysis Services servers for the given subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_ListSkusForNew": {
+            "main": "./lib/actions/Servers_ListSkusForNew.js",
+            "title": "Lists eligible SKUs for Analysis Services resource provider.",
+            "description": "Lists eligible SKUs for Analysis Services resource provider.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_ListSkusForNew.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_ListByResourceGroup": {
+            "main": "./lib/actions/Servers_ListByResourceGroup.js",
+            "title": "Gets all the Analysis Services servers for the given resource group.",
+            "description": "Gets all the Analysis Services servers for the given resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_Delete": {
+            "main": "./lib/actions/Servers_Delete.js",
+            "title": "Deletes the specified Analysis Services server.",
+            "description": "Deletes the specified Analysis Services server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_GetDetails": {
+            "main": "./lib/actions/Servers_GetDetails.js",
+            "title": "Gets details about the specified Analysis Services server.",
+            "description": "Gets details about the specified Analysis Services server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_GetDetails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_Update": {
+            "main": "./lib/actions/Servers_Update.js",
+            "title": "Updates the current state of the specified Analysis Services server.",
+            "description": "Updates the current state of the specified Analysis Services server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_Create": {
+            "main": "./lib/actions/Servers_Create.js",
+            "title": "Provisions the specified Analysis Services server based on the configuration specified in the request.",
+            "description": "Provisions the specified Analysis Services server based on the configuration specified in the request.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_DissociateGateway": {
+            "main": "./lib/actions/Servers_DissociateGateway.js",
+            "title": "Dissociates a Unified Gateway associated with the server.",
+            "description": "Dissociates a Unified Gateway associated with the server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_DissociateGateway.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_ListGatewayStatus": {
+            "main": "./lib/actions/Servers_ListGatewayStatus.js",
+            "title": "Return the gateway status of the specified Analysis Services server instance.",
+            "description": "Return the gateway status of the specified Analysis Services server instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_ListGatewayStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_Resume": {
+            "main": "./lib/actions/Servers_Resume.js",
+            "title": "Resumes operation of the specified Analysis Services server instance.",
+            "description": "Resumes operation of the specified Analysis Services server instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_Resume.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_ListSkusForExisting": {
+            "main": "./lib/actions/Servers_ListSkusForExisting.js",
+            "title": "Lists eligible SKUs for an Analysis Services resource.",
+            "description": "Lists eligible SKUs for an Analysis Services resource.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_ListSkusForExisting.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_Suspend": {
+            "main": "./lib/actions/Servers_Suspend.js",
+            "title": "Suspends operation of the specified Analysis Services server instance.",
+            "description": "Suspends operation of the specified Analysis Services server instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_Suspend.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
